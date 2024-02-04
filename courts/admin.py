@@ -5,12 +5,12 @@ from .models import Court
 @admin.register(Court)
 class CourtAdmin(admin.ModelAdmin):
     list_display = ('courtID', 'title', 'availability',
-                    'address', 'availabilityTag')
-    list_filter = ('availability', 'availabilityTag')
+                    'address')
+    list_filter = ('availability',)
     search_fields = ('title', 'address')
     ordering = ('courtID',)
 
     fieldsets = (
         (None, {'fields': ('title', 'availability', 'num_availability',
-         'availabilityTag', 'address', 'court_image')}),
+                           'address', 'court_image')}),
     )
