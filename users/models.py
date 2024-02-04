@@ -22,16 +22,21 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin):
     firstName = models.CharField(max_length=30)
     lastName = models.CharField(max_length=30)
-    playerID = models.AutoField(primary_key=True)
+    playerID = models.AutoField(primary_key=True, default=0)
     emailAddress = models.EmailField(unique=True)
     password = models.CharField(max_length=128)
+    position = models.CharField(max_length=50)
+    hometown = models.CharField(
+        max_length=50, null=True, blank=True)
+    skillLevel = models.CharField(
+        max_length=50, null=True, blank=True)
     height = models.DecimalField(
         max_digits=5, decimal_places=2, null=True, blank=True)
     weight = models.DecimalField(
         max_digits=5, decimal_places=2, null=True, blank=True)
-    age = models.PositiveIntegerField()
-    skill_level = models.CharField(max_length=50)
-    position = models.CharField(max_length=50)
+    ageGroup = models.CharField(
+        max_length=50, null=True, blank=True)
+    playType = models.CharField(max_length=50, null=True, blank=True)
 
     USERNAME_FIELD = 'emailAddress'
     REQUIRED_FIELDS = ['firstName', 'lastName']
