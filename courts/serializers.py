@@ -5,5 +5,5 @@ from .models import Court
 class CourtSerializer(serializers.ModelSerializer):
     class Meta:
         model = Court
-        fields = ('courtID', 'num_availability',
+        fields = ('courtID', 'title', 'availability', 'num_availability',
                   'availabilityTag', 'address', 'court_image')

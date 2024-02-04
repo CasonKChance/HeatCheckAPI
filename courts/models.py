@@ -8,6 +8,9 @@ class CourtManager(models.Manager):
 
 class Court(models.Model):
     courtID = models.AutoField(primary_key=True)
+    title = models.CharField(max_length=100)
+    availability = models.CharField(
+        max_length=50)
     num_availability = models.PositiveIntegerField()
     availabilityTag = models.BooleanField(default=True)
     address = models.CharField(max_length=255)
@@ -17,4 +20,4 @@ class Court(models.Model):
     objects = CourtManager()
 
     def __str__(self):
-        return self.address
+        return self.title
