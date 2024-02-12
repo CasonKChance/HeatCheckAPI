@@ -5,5 +5,4 @@ from .models import Court
 class CourtSerializer(serializers.ModelSerializer):
     class Meta:
         model = Court
-        fields = ('courtID', 'title', 'availability', 'num_availability',
-                  'availabilityTag', 'address', 'court_image')
+        fields = '__all__'  # This will include all fields from the model

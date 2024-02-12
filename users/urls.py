@@ -1,11 +1,12 @@
 from django.urls import path
-from . import views
+from .views import UserRetrieveUpdateDestroy, UserCreate, UserListCreate
+
 
 app_name = 'users'  # Django app naming (namespacing)
 
 urlpatterns = [
-    path('<int:pk>/', views.user_detail, name='user_detail'),
-    path('new/', views.user_create, name='user_create'),
-    path('<int:pk>/edit/', views.user_edit, name='user_edit'),
-    path('<int:pk>/delete/', views.user_delete, name='user_delete'),
+    path('<int:pk>/', UserRetrieveUpdateDestroy.as_view(),
+         name='user-retrieve-update-destroy'),
+    path('', UserListCreate.as_view(), name='user-list-create'),
+    path('create/', UserCreate.as_view(), name='user_create'),
 ]

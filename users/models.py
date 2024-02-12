@@ -16,26 +16,27 @@ class UserManager(BaseUserManager):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
 
+        if extra_fields.get('is_staff') is not True:
+            raise ValueError('Superuser must have is_staff=True.')
+        if extra_fields.get('is_superuser') is not True:
+            raise ValueError('Superuser must have is_superuser=True.')
+
         return self.create_user(email, password, **extra_fields)
 
 
 class User(AbstractBaseUser, PermissionsMixin):
     firstName = models.CharField(max_length=30)
     lastName = models.CharField(max_length=30)
-    playerID = models.AutoField(primary_key=True, default=0)
+    playerID = models.AutoField(primary_key=True)
     emailAddress = models.EmailField(unique=True)
-    password = models.CharField(max_length=128)
     position = models.CharField(max_length=50)
-    hometown = models.CharField(
-        max_length=50, null=True, blank=True)
-    skillLevel = models.CharField(
-        max_length=50, null=True, blank=True)
+    hometown = models.CharField(max_length=50, null=True, blank=True)
+    skillLevel = models.CharField(max_length=50, null=True, blank=True)
     height = models.DecimalField(
         max_digits=5, decimal_places=2, null=True, blank=True)
     weight = models.DecimalField(
         max_digits=5, decimal_places=2, null=True, blank=True)
-    ageGroup = models.CharField(
-        max_length=50, null=True, blank=True)
+    ageGroup = models.CharField(max_length=50, null=True, blank=True)
     playType = models.CharField(max_length=50, null=True, blank=True)
 
     USERNAME_FIELD = 'emailAddress'
