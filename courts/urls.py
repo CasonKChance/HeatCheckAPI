@@ -1,10 +1,10 @@
 from django.urls import path
-from .views import CourtListCreate, CourtRetrieveUpdateDestroy
+from .views import CourtListView, CourtSpecificView
 
 app_name = 'courts'  # Django app naming (namespacing)
 
 urlpatterns = [
-    path('', CourtListCreate.as_view(), name='court-list-create'),
-    path('<int:pk>/', CourtRetrieveUpdateDestroy.as_view(),
-         name='court-retrieve-update-destroy'),
+    path('', CourtListView.as_view(), name='court_list'),
+    path('<int:pk>/', CourtSpecificView.as_view(),
+         name='court_specific'),
 ]

@@ -1,10 +1,10 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from .models import User
+from .models import CustomUser
 
 
-@admin.register(User)
-class UserAdmin(BaseUserAdmin):
+class CustomUserAdmin(BaseUserAdmin):
+    model = CustomUser
     list_display = ('emailAddress', 'firstName', 'lastName', 'position')
     search_fields = ('emailAddress', 'firstName', 'lastName')
     list_filter = ('position', 'skillLevel', 'ageGroup')
@@ -36,3 +36,5 @@ class UserAdmin(BaseUserAdmin):
 
     # Customize the ordering, if needed
     # ordering = ('emailAddress',)
+
+admin.site.register(CustomUser, CustomUserAdmin)

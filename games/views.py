@@ -11,7 +11,6 @@ class GameListCreate(generics.ListCreateAPIView):
             return GameCreateUpdateSerializer
         return GameSerializer
 
-
 class GameRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Game.objects.all()
 

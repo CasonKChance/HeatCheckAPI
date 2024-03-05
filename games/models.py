@@ -1,5 +1,5 @@
 from django.db import models
-from users.models import User
+from users.models import CustomUser
 from courts.models import Court
 
 
@@ -12,7 +12,7 @@ class Game(models.Model):
     gameID = models.AutoField(primary_key=True)
     court = models.ForeignKey(
         Court, on_delete=models.CASCADE, related_name='games')
-    players_associated = models.ManyToManyField(User, related_name='games')
+    players_associated = models.ManyToManyField(CustomUser, related_name='games')
 
     objects = GameManager()
 
