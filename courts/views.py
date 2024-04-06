@@ -17,6 +17,7 @@ class CourtRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Court.objects.all()
     serializer_class = CourtSerializer
 
+
 class CourtListView(APIView):
     permission_classes = [AllowAny]
 
@@ -25,7 +26,8 @@ class CourtListView(APIView):
 
         serializer = CourtSerializer(courts, many=True)
         return Response(serializer.data)
-    
+
+
 class CourtSpecificView(APIView):
     permission_classes = [AllowAny]
 

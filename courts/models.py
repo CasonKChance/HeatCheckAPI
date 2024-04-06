@@ -15,6 +15,8 @@ class Court(models.Model):
     address = models.CharField(max_length=255)
     court_image = models.ImageField(
         upload_to='court_images/', blank=True, null=True)
+    latitude = models.FloatField(null=True, blank=True)
+    longitude = models.FloatField(null=True, blank=True)
 
     objects = CourtManager()
 
