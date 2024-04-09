@@ -31,9 +31,8 @@ class CourtListView(APIView):
 class CourtSpecificView(APIView):
     permission_classes = [AllowAny]
 
-    def get(self, request):
-        court_id = request.data.get('id')
-        court = Court.objects.filter(id=court_id)
+    def get(self, request, pk):
+        court = Court.objects.get(courtID=pk)
 
         serializer = CourtSerializer(court)
         return Response(serializer.data)
